@@ -24,6 +24,7 @@ function generateOption(currencyType: ChartType, data: ITransformedData) {
   });
 
   return {
+    color: ['#ff8c00'],
     title: {
       text: 'Заголовок',
     },
@@ -59,7 +60,6 @@ function generateOption(currencyType: ChartType, data: ITransformedData) {
         margin: 20,
       },
     },
-    // TODO: change tooltip circle color
     tooltip: {
       trigger: 'axis',
       valueFormatter: (value: number) => value + ' ₽',
@@ -71,9 +71,6 @@ function generateOption(currencyType: ChartType, data: ITransformedData) {
         data: seriesData,
         type: 'line',
         symbol: 'none',
-        lineStyle: {
-          color: '#ff8c00',
-        },
       },
     ],
   };
