@@ -1,3 +1,20 @@
+// TODO: Move types/interfaces to special file
+
+export interface IDataItem {
+  date: string;
+  month: string;
+  indicator: string;
+  value: number;
+}
+
+export interface ITransformedData {
+  usd: IDataItem[];
+  eur: IDataItem[];
+  cny: IDataItem[];
+}
+
+export type ChartType = 'usd' | 'eur' | 'cny';
+
 class ChartService {
   _apiBaseUrl = 'https://670449afab8a8f8927338157.mockapi.io/';
 
@@ -17,7 +34,35 @@ class ChartService {
   };
 
   getChartData = async () => {
-    return this.getResource(`${this._apiBaseUrl}/data`);
+    const raw = await this.getResource(`${this._apiBaseUrl}/data`);
+
+    return this._transformChartData(raw);
+  };
+
+  _transformChartData = (data: IDataItem[]) => {
+    const transformedData: ITransformedData = {
+      usd: [],
+      eur: [],
+      cny: [],
+    };
+
+    data.forEach((dataItem) => {
+      switch (dataItem.indicator) {
+        case 'Курс доллара':
+          transformedData.usd.push(dataItem);
+          break;
+
+        case 'Курс евро':
+          transformedData.eur.push(dataItem);
+          break;
+
+        case 'Курс юаня':
+          transformedData.cny.push(dataItem);
+          break;
+      }
+    });
+
+    return transformedData;
   };
 }
 

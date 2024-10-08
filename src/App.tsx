@@ -1,13 +1,14 @@
 import React from 'react';
+import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
 
-import ChartService from './services/ChartService';
-
-const chartService = new ChartService();
-
-chartService.getChartData().then((result) => console.log(result));
+import Chart from './Chart/Chart';
 
 function App() {
-  return <div>Тут будет приложение.</div>;
+  return (
+    <Theme preset={presetGpnDefault}>
+      <Chart />
+    </Theme>
+  );
 }
 
 export default App;
