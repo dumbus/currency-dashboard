@@ -25,7 +25,7 @@ function Dashboard() {
   );
   // TODO: remove <any> type
   const [currentOption, setCurrentOption] = useState<any>({});
-  const [averageValue, setAverageValue] = useState<string>('0.0');
+  const [averageValue, setAverageValue] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
@@ -36,7 +36,7 @@ function Dashboard() {
   }, []);
 
   useEffect(() => {
-    if (chartData) {
+    if (chartData[currentChartType].length) {
       const currentOption = generateChartOption(currentChartType, chartData);
       const currentAverageValue = countAverageValue(
         currentChartType,
@@ -72,7 +72,7 @@ function Dashboard() {
       />
       <div className="aside">
         <CurrencyChooser setCurrentChartType={setCurrentChartType} />
-        <Average averageValue={averageValue} />
+        {averageValue && <Average averageValue={averageValue} />}
       </div>
     </>
   ) : null;
