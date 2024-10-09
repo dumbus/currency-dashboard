@@ -23,10 +23,23 @@
 .aside {
   height: 100%;
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
 }
 
 .currency {
   height: 24px;
   margin-left: auto;
+}
+
+.average {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.average-title {
 }

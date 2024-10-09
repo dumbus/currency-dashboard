@@ -6,9 +6,11 @@ import { ITransformedData, ChartType } from '../types/types';
 
 import ReactECharts from './ReactECharts';
 import CurrencyChooser from './CurrencyChooser';
+import Average from './Average';
 import DashboardService from '../services/DashboardService';
 
 import { generateChartOption } from '../utils/ChartsOptionHelpers';
+import { countAverageValue } from '../utils/AverageHelpers';
 
 function Dashboard() {
   const [chartData, setChartData] = useState<ITransformedData>({
@@ -21,6 +23,7 @@ function Dashboard() {
   );
   // TODO: remove <any> type
   const [currentOption, setCurrentOption] = useState<any>({});
+  const [averageValue, setAverageValue] = useState<string>('0.0');
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
@@ -32,7 +35,14 @@ function Dashboard() {
 
   useEffect(() => {
     if (chartData) {
-      setCurrentOption(generateChartOption(currentChartType, chartData));
+      const currentOption = generateChartOption(currentChartType, chartData);
+      const currentAverageValue = countAverageValue(
+        currentChartType,
+        chartData
+      );
+
+      setCurrentOption(currentOption);
+      setAverageValue(currentAverageValue);
     }
   }, [currentChartType, chartData]);
 
@@ -64,6 +74,7 @@ function Dashboard() {
         />
         <div className="aside">
           <CurrencyChooser setCurrentChartType={setCurrentChartType} />
+          <Average averageValue={averageValue} />
         </div>
       </Card>
     </div>
