@@ -1,3 +1,6 @@
+// File with common style values that will be used in ECharts option object multiple types
+// For easy theme changing, I've put them into separate file
+
 export const fontFamily = 'Inter, sans-serif';
 
 export const colors = {

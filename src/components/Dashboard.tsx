@@ -23,19 +23,21 @@ function Dashboard() {
   const [currentChartType, setCurrentChartType] = useState<ChartType>(
     ChartType.USD
   );
-  // TODO: remove <any> type
-  const [currentOption, setCurrentOption] = useState<any>({});
+  const [currentOption, setCurrentOption] = useState<any>({}); // Any type because not all typed echarts options are needed to work
   const [averageValue, setAverageValue] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   const dashboardService = new DashboardService();
 
+  // Fetch data from API on first render of Component
   useEffect(() => {
     onRequest();
   }, []);
 
+  // Update Chart if currency type was changed
   useEffect(() => {
+    // Check if chartData for current currency contains data
     if (chartData[currentChartType].length) {
       const currentOption = generateChartOption(currentChartType, chartData);
       const currentAverageValue = countAverageValue(
@@ -62,6 +64,7 @@ function Dashboard() {
     setIsLoading(false);
   };
 
+  // Use conditional rendering to show current state of application
   const loader = isLoading ? <Loader size="m" /> : null;
   const error = hasError ? <Error /> : null;
   const content = !(isLoading || hasError) ? (

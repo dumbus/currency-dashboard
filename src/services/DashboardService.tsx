@@ -1,5 +1,6 @@
 import { IDataItem, ITransformedData } from '../types/types';
 
+// Service to fetch data from API
 class DashboardService {
   _apiBaseUrl = 'https://670449afab8a8f8927338157.mockapi.io/';
 
@@ -8,6 +9,7 @@ class DashboardService {
     headers: { 'content-type': 'application/json' },
   };
 
+  // Method to get raw data from API
   getResource = async (url: string) => {
     const response = await fetch(url, this._fetchOptions);
 
@@ -24,6 +26,7 @@ class DashboardService {
     return this._transformChartData(raw);
   };
 
+  // Function-helper to transform raw API data to more convenient from
   _transformChartData = (data: IDataItem[]) => {
     const transformedData: ITransformedData = {
       usd: [],

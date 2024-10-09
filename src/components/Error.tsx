@@ -2,6 +2,7 @@ import React from 'react';
 
 import { ResponsesConnectionError } from '@consta/uikit/ResponsesConnectionError';
 
+// Since application is small and simple, decided to use same component for all types of errors
 function Error() {
   return (
     <ResponsesConnectionError

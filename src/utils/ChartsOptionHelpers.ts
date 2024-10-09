@@ -2,37 +2,7 @@ import { ChartType, CurrencySymbol, ITransformedData } from '../types/types';
 
 import { fontFamily, colors } from './echartsVariables';
 
-const globalEChartsOptions = {
-  title: {
-    textStyle: {
-      fontFamily: fontFamily,
-      color: colors.darkColor,
-    },
-  },
-  xAxis: {
-    axisLabel: {
-      textStyle: {
-        fontFamily: fontFamily,
-        color: colors.lightColor,
-      },
-    },
-  },
-  yAxis: {
-    axisLabel: {
-      textStyle: {
-        fontFamily: fontFamily,
-        color: colors.lightColor,
-      },
-    },
-  },
-  tooltip: {
-    textStyle: {
-      fontFamily: fontFamily,
-      color: colors.darkColor,
-    },
-  },
-};
-
+// Function to create options for EChart render
 export function generateChartOption(
   currencyType: ChartType,
   data: ITransformedData
@@ -50,7 +20,6 @@ export function generateChartOption(
   });
 
   return {
-    ...globalEChartsOptions,
     color: ['#ff8c00'],
     title: {
       text: generateChartTitle(currencyType),
@@ -130,12 +99,16 @@ function generateChartTitle(currencyType: ChartType) {
   }
 }
 
-// TODO: remove <any> type
+// Function to render custom Tooltip to match Figma layout
+// Decided to leave any type because it comes from third party library
 function tooltipFormatter(params: any) {
   const axisValue = params[0].axisValue;
   const seriesName = params[0].seriesName;
   const dataValue = params[0].data;
 
+  // If we compare Figma layout and video with showcase, we will see difference in Tooltip part that corresponds to axisValue
+  // In showcase it also contains word "год" after axisValue
+  // I've decided to use Figma layout version (without "год" word)
   return `
     <div style="text-align: left;">
       <div style="font-size: 12px; font-weight: bold; font-family: ${fontFamily}; color: ${colors.darkColor};">

@@ -1,5 +1,6 @@
 import { ChartType, ITransformedData } from '../types/types';
 
+// Function to count average value to pass it to Average component
 export function countAverageValue(
   currencyType: ChartType,
   data: ITransformedData

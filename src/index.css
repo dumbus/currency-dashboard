@@ -1,3 +1,6 @@
+/* Since the application is small, I decided not to distribute styles for different components across different files to avoid confusion. */
+
+/* Moved the main and repeating colors into separate CSS variables to be able to easily change the overall theme of the application */
 :root {
   --main-color: #ff8c00;
   --dark-color: #002033;
@@ -72,6 +75,7 @@
   color: var(--main-color);
 }
 
+/* The default description color in the error component from Consta UI Kit is very light, changed it to a darker one */
 .error .Responses-Description {
   color: var(--dark-color);
 }

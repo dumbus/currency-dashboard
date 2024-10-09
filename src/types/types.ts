@@ -1,3 +1,5 @@
+// File with types and interfaces that are used in multiple files
+
 export interface IDataItem {
   date: string;
   month: string;

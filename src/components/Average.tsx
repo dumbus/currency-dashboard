@@ -4,6 +4,7 @@ interface AverageProps {
   averageValue: string;
 }
 
+// Get average value from props and render simple component to show it
 function Average({ averageValue }: AverageProps) {
   return (
     <div className="average">
