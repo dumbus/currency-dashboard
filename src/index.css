@@ -43,5 +43,6 @@
   text-align: center;
 }
 
-.average-title {
+.error .Responses-Description {
+  color: #002033;
 }

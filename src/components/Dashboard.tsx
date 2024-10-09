@@ -8,6 +8,7 @@ import { ITransformedData, ChartType } from '../types/types';
 import ReactECharts from './ReactECharts';
 import CurrencyChooser from './CurrencyChooser';
 import Average from './Average';
+import Error from './Error';
 import DashboardService from '../services/DashboardService';
 
 import { generateChartOption } from '../utils/ChartsOptionHelpers';
@@ -62,6 +63,7 @@ function Dashboard() {
   };
 
   const loader = isLoading ? <Loader size="m" /> : null;
+  const error = hasError ? <Error /> : null;
   const content = !(isLoading || hasError) ? (
     <>
       <ReactECharts
@@ -84,6 +86,7 @@ function Dashboard() {
         shadow={true}
       >
         {loader}
+        {error}
         {content}
       </Card>
     </div>
