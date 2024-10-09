@@ -2,7 +2,9 @@ import { IDataItem, ITransformedData } from '../types/types';
 
 // Service to fetch data from API
 class DashboardService {
-  _apiBaseUrl = 'https://670449afab8a8f8927338157.mockapi.io/';
+  // Hide Project secret from code
+  _apiSecret = process.env.REACT_APP_API_SECRET;
+  _apiBaseUrl = `https://${this._apiSecret}.mockapi.io/`;
 
   _fetchOptions = {
     method: 'GET',
