@@ -5,13 +5,20 @@ import { Card } from '@consta/uikit/Card';
 import { ITransformedData, ChartType } from '../types/types';
 
 import ReactECharts from './ReactECharts';
+import CurrencyChooser from './CurrencyChooser';
 import DashboardService from '../services/DashboardService';
 
 import { generateChartOption } from '../utils/ChartsOptionHelpers';
 
 function Dashboard() {
-  const [chartData, setChartData] = useState<ITransformedData | []>([]);
-  const [currentChartType, setCurrentChartType] = useState<ChartType>('cny');
+  const [chartData, setChartData] = useState<ITransformedData>({
+    usd: [],
+    eur: [],
+    cny: [],
+  });
+  const [currentChartType, setCurrentChartType] = useState<ChartType>(
+    ChartType.CNY
+  );
   // TODO: remove <any> type
   const [currentOption, setCurrentOption] = useState<any>({});
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +28,13 @@ function Dashboard() {
 
   useEffect(() => {
     onRequest();
-  });
+  }, []);
+
+  useEffect(() => {
+    if (chartData) {
+      setCurrentOption(generateChartOption(currentChartType, chartData));
+    }
+  }, [currentChartType, chartData]);
 
   const onRequest = () => {
     dashboardService.getChartData().then(onChartDataLoaded).catch(onError);
@@ -30,7 +43,6 @@ function Dashboard() {
   const onChartDataLoaded = (loadedData: ITransformedData) => {
     setChartData(loadedData);
     setIsLoading(false);
-    setCurrentOption(generateChartOption(currentChartType, loadedData));
   };
 
   const onError = () => {
@@ -50,6 +62,9 @@ function Dashboard() {
           option={currentOption}
           style={{ width: '985px', height: '330px' }}
         />
+        <div className="aside">
+          <CurrencyChooser setCurrentChartType={setCurrentChartType} />
+        </div>
       </Card>
     </div>
   );

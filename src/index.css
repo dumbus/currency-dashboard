@@ -16,5 +16,17 @@
 .dashboard {
   width: 1200px;
   height: 350px;
+  display: flex;
   background-color: #ffffff;
+}
+
+.aside {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+}
+
+.currency {
+  height: 24px;
+  margin-left: auto;
 }

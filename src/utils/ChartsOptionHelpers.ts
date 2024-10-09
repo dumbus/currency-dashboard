@@ -57,13 +57,14 @@ export function generateChartOption(
       trigger: 'axis',
       valueFormatter: (value: number) => value + ' ₽',
     },
-    animation: false,
     series: [
       {
         name: seriesName,
         data: seriesData,
         type: 'line',
         symbol: 'none',
+        animationDuration: 500,
+        animationEasing: 'cubicOut',
       },
     ],
   };

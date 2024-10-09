@@ -11,4 +11,8 @@ export interface ITransformedData {
   cny: IDataItem[];
 }
 
-export type ChartType = 'usd' | 'eur' | 'cny';
+export enum ChartType {
+  USD = 'usd',
+  EUR = 'eur',
+  CNY = 'cny',
+}
