@@ -1,4 +1,4 @@
-import { ChartType, ITransformedData } from '../types/types';
+import { ChartType, CurrencySymbol, ITransformedData } from '../types/types';
 
 export function generateChartOption(
   currencyType: ChartType,
@@ -19,7 +19,7 @@ export function generateChartOption(
   return {
     color: ['#ff8c00'],
     title: {
-      text: 'Заголовок',
+      text: generateChartTitle(currencyType),
     },
     grid: {
       left: '30px',
@@ -68,4 +68,15 @@ export function generateChartOption(
       },
     ],
   };
+}
+
+function generateChartTitle(currencyType: ChartType) {
+  switch (currencyType) {
+    case ChartType.USD:
+      return `КУРС ДОЛЛАРА, ${CurrencySymbol.USD}/₽`;
+    case ChartType.EUR:
+      return `КУРС ЕВРО, ${CurrencySymbol.EUR}/₽`;
+    case ChartType.CNY:
+      return `КУРС ЮАНЯ, ${CurrencySymbol.CNY}/₽`;
+  }
 }

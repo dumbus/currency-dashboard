@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 
 import { ChoiceGroup } from '@consta/uikit/ChoiceGroup';
 
-import { ChartType } from '../types/types';
+import { ChartType, CurrencySymbol } from '../types/types';
 
-const choiceLabels = ['$', '€', '¥'];
+const choiceLabels = [
+  CurrencySymbol.USD,
+  CurrencySymbol.EUR,
+  CurrencySymbol.CNY,
+];
 const choiceValues = [ChartType.USD, ChartType.EUR, ChartType.CNY];
 
 interface CurrencyChooserProps {
@@ -12,7 +16,7 @@ interface CurrencyChooserProps {
 }
 
 function CurrencyChooser({ setCurrentChartType }: CurrencyChooserProps) {
-  const [label, setLabel] = useState<string | null>(choiceLabels[0]);
+  const [label, setLabel] = useState<CurrencySymbol | null>(CurrencySymbol.USD);
 
   return (
     <ChoiceGroup
@@ -24,7 +28,7 @@ function CurrencyChooser({ setCurrentChartType }: CurrencyChooserProps) {
         setCurrentChartType(choiceValues[newCurrencyIdx]);
       }}
       items={choiceLabels}
-      getItemLabel={(item) => item}
+      getItemLabel={(item: CurrencySymbol) => item}
       multiple={false}
       size="xs"
       name="CurrencyChooser"

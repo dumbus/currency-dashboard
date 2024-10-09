@@ -16,3 +16,9 @@ export enum ChartType {
   EUR = 'eur',
   CNY = 'cny',
 }
+
+export enum CurrencySymbol {
+  USD = '$',
+  EUR = '€',
+  CNY = '¥',
+}

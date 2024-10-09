@@ -17,7 +17,7 @@ function Dashboard() {
     cny: [],
   });
   const [currentChartType, setCurrentChartType] = useState<ChartType>(
-    ChartType.CNY
+    ChartType.USD
   );
   // TODO: remove <any> type
   const [currentOption, setCurrentOption] = useState<any>({});
