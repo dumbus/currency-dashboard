@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Card } from '@consta/uikit/Card';
+import { Loader } from '@consta/uikit/Loader';
 
 import { ITransformedData, ChartType } from '../types/types';
 
@@ -60,6 +61,20 @@ function Dashboard() {
     setIsLoading(false);
   };
 
+  const loader = isLoading ? <Loader size="m" /> : null;
+  const content = !(isLoading || hasError) ? (
+    <>
+      <ReactECharts
+        option={currentOption}
+        style={{ width: '985px', height: '330px' }}
+      />
+      <div className="aside">
+        <CurrencyChooser setCurrentChartType={setCurrentChartType} />
+        <Average averageValue={averageValue} />
+      </div>
+    </>
+  ) : null;
+
   return (
     <div className="container">
       <Card
@@ -68,14 +83,8 @@ function Dashboard() {
         horizontalSpace="xs"
         shadow={true}
       >
-        <ReactECharts
-          option={currentOption}
-          style={{ width: '985px', height: '330px' }}
-        />
-        <div className="aside">
-          <CurrencyChooser setCurrentChartType={setCurrentChartType} />
-          <Average averageValue={averageValue} />
-        </div>
+        {loader}
+        {content}
       </Card>
     </div>
   );
