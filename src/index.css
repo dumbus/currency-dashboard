@@ -1,3 +1,9 @@
+:root {
+  --main-color: #ff8c00;
+  --dark-color: #002033;
+  --light-color: #667985;
+}
+
 * {
   font-family: 'Inter', sans-serif;
   font-optical-sizing: auto;
@@ -45,9 +51,27 @@
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  font-weight: 400;
   text-align: center;
+  color: var(--light-color);
+}
+
+.average-title {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.average-value {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.average-value span {
+  font-size: 48px;
+  line-height: 72px;
+  color: var(--main-color);
 }
 
 .error .Responses-Description {
-  color: #002033;
+  color: var(--dark-color);
 }
