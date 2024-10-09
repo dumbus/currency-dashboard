@@ -1,21 +1,6 @@
-// TODO: Move types/interfaces to special file
+import { IDataItem, ITransformedData } from '../types/types';
 
-export interface IDataItem {
-  date: string;
-  month: string;
-  indicator: string;
-  value: number;
-}
-
-export interface ITransformedData {
-  usd: IDataItem[];
-  eur: IDataItem[];
-  cny: IDataItem[];
-}
-
-export type ChartType = 'usd' | 'eur' | 'cny';
-
-class ChartService {
+class DashboardService {
   _apiBaseUrl = 'https://670449afab8a8f8927338157.mockapi.io/';
 
   _fetchOptions = {
@@ -66,4 +51,4 @@ class ChartService {
   };
 }
 
-export default ChartService;
+export default DashboardService;

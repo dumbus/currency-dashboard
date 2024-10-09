@@ -1,12 +1,14 @@
 import React from 'react';
 import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
 
-import Chart from './Chart/Chart';
+import Dashboard from './components/Dashboard';
+
+import './index.css';
 
 function App() {
   return (
     <Theme preset={presetGpnDefault}>
-      <Chart />
+      <Dashboard />
     </Theme>
   );
 }
