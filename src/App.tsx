@@ -1,7 +1,16 @@
 import React from 'react';
+import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
+
+import Dashboard from './components/Dashboard';
+
+import './index.css';
 
 function App() {
-  return <div>Тут будет приложение.</div>;
+  return (
+    <Theme preset={presetGpnDefault}>
+      <Dashboard />
+    </Theme>
+  );
 }
 
 export default App;

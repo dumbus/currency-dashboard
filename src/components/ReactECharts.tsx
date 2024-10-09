@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import type { CSSProperties } from 'react';
 
-import { forceResizeCharts } from './UtilsForCharts';
+import { forceResizeCharts } from '../utils/reactEChartsHelpers';
 
 interface IOnEvents {
   type: string;
@@ -19,15 +19,13 @@ export interface ReactEChartsProps {
   forceResize?: boolean;
 }
 
-
 export interface ILegendselectchangedParams {
   name: string;
   selected: Record<string, boolean>;
   type: string;
 }
 
-
-export function ReactECharts({
+function ReactECharts({
   option,
   onEvents,
   style,
@@ -89,3 +87,5 @@ export function ReactECharts({
     <div ref={chartRef} style={{ width: '100%', height: '100%', ...style }} />
   );
 }
+
+export default ReactECharts;

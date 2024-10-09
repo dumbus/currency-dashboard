@@ -1,0 +1,81 @@
+/* Since the application is small, I decided not to distribute styles for different components across different files to avoid confusion. */
+
+/* Moved the main and repeating colors into separate CSS variables to be able to easily change the overall theme of the application */
+:root {
+  --main-color: #ff8c00;
+  --dark-color: #002033;
+  --light-color: #667985;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dashboard {
+  width: 1200px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.aside {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.currency {
+  height: 24px;
+  margin-left: auto;
+}
+
+.average {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  font-weight: 400;
+  text-align: center;
+  color: var(--light-color);
+}
+
+.average-title {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.average-value {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.average-value span {
+  font-size: 48px;
+  line-height: 72px;
+  color: var(--main-color);
+}
+
+/* The default description color in the error component from Consta UI Kit is very light, changed it to a darker one */
+.error .Responses-Description {
+  color: var(--dark-color);
+}
