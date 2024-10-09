@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import type { CSSProperties } from 'react';
 
-import { forceResizeCharts } from '../utils/ReactEChartsHelpers';
+import { forceResizeCharts } from '../utils/reactEChartsHelpers';
 
 interface IOnEvents {
   type: string;

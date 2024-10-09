@@ -11,8 +11,8 @@ import Average from './Average';
 import Error from './Error';
 import DashboardService from '../services/DashboardService';
 
-import { generateChartOption } from '../utils/ChartsOptionHelpers';
-import { countAverageValue } from '../utils/AverageHelpers';
+import { generateChartOption } from '../utils/chartsOptionHelpers';
+import { countAverageValue } from '../utils/averageHelpers';
 
 function Dashboard() {
   const [chartData, setChartData] = useState<ITransformedData>({
